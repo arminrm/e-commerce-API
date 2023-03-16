@@ -1,0 +1,654 @@
+openapi: 3.0.0
+info:
+  title: E-Commerce API
+  contact: {}
+  version: '1.0'
+servers:
+- url: http://3.220.174.105:8080/api/v1
+  variables: {}
+- url: https://kd2qzwtqf2.execute-api.us-east-1.amazonaws.com/Test/deleteimage
+  variables: {}
+paths:
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: Register
+      operationId: Register
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - email
+              - name
+              - password
+              type: object
+              properties:
+                email:
+                  type: string
+                name:
+                  type: string
+                password:
+                  type: string
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Login
+      operationId: Login
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - email
+              - password
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: bob@gmail.com
+                password:
+                  type: string
+                  example: Bob123
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /auth/logout:
+    get:
+      tags:
+      - Auth
+      summary: Logout
+      operationId: Logout
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /users/showMe:
+    get:
+      tags:
+      - User
+      summary: Show Current User
+      operationId: ShowCurrentUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /users/updateUser:
+    patch:
+      tags:
+      - User
+      summary: Update User
+      operationId: UpdateUser
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - name
+              - email
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /users/updateUserPassword:
+    patch:
+      tags:
+      - User
+      summary: Update User Password
+      operationId: UpdateUserPassword
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - oldPassword
+              - newPassword
+              type: object
+              properties:
+                oldPassword:
+                  type: string
+                newPassword:
+                  type: string
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /users/{id}:
+    get:
+      tags:
+      - User
+      summary: Get Single User
+      operationId: GetSingleUser
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /users:
+    get:
+      tags:
+      - User
+      summary: Get All Users
+      operationId: GetAllUsers
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /products:
+    post:
+      tags:
+      - Products
+      summary: Create Product
+      operationId: CreateProduct
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - name
+              - price
+              - description
+              - category
+              - company
+              - inventory
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: string
+                description:
+                  type: string
+                category:
+                  type: string
+                company:
+                  type: string
+                inventory:
+                  type: string
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+    get:
+      tags:
+      - Products
+      summary: Get All Products
+      operationId: GetAllProducts
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /products/{id}:
+    patch:
+      tags:
+      - Products
+      summary: Update Product
+      operationId: UpdateProduct
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+    delete:
+      tags:
+      - Products
+      summary: Delete Product
+      operationId: DeleteProduct
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /products/{id}/uploadImage:
+    post:
+      tags:
+      - Products
+      summary: Upload Image
+      operationId: UploadImage
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - image
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /{id}:
+    delete:
+      tags:
+      - Products
+      summary: Delete Images
+      operationId: DeleteImages
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://kd2qzwtqf2.execute-api.us-east-1.amazonaws.com/Test/deleteimage
+        variables: {}
+  /reviews:
+    get:
+      tags:
+      - Reviews
+      summary: Get All Reviews
+      operationId: GetAllReviews
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+    post:
+      tags:
+      - Reviews
+      summary: Create Review
+      operationId: CreateReview
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - rating
+              - title
+              - comment
+              - product
+              type: object
+              properties:
+                rating:
+                  type: string
+                title:
+                  type: string
+                comment:
+                  type: string
+                product:
+                  type: string
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /reviews/{id}:
+    get:
+      tags:
+      - Reviews
+      summary: Get Single Review
+      operationId: GetSingleReview
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+    patch:
+      tags:
+      - Reviews
+      summary: Update Review
+      operationId: UpdateReview
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - rating
+              - title
+              - comment
+              type: object
+              properties:
+                rating:
+                  type: string
+                title:
+                  type: string
+                comment:
+                  type: string
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+    delete:
+      tags:
+      - Reviews
+      summary: Delete Review
+      operationId: DeleteReview
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /orders:
+    post:
+      tags:
+      - Orders
+      summary: Create Order
+      operationId: CreateOrder
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateOrderRequest'
+              - example:
+                  tax: 499
+                  shippingFee: 799
+                  items:
+                  - amount: 3
+                    product: 615c873ad584c748cc86e5bb
+                  - amount: 2
+                    product: 615e04a132ba7c9f0338f13e
+            example:
+              tax: 499
+              shippingFee: 799
+              items:
+              - amount: 3
+                product: 615c873ad584c748cc86e5bb
+              - amount: 2
+                product: 615e04a132ba7c9f0338f13e
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+    get:
+      tags:
+      - Orders
+      summary: Get All Orders
+      operationId: GetAllOrders
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /orders/showAllMyOrders:
+    get:
+      tags:
+      - Orders
+      summary: Show All My Orders
+      operationId: ShowAllMyOrders
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+  /orders/{id}:
+    get:
+      tags:
+      - Orders
+      summary: Get Single Order
+      operationId: GetSingleOrder
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://3.220.174.105:8080/api/v1
+        variables: {}
+components:
+  schemas:
+    CreateOrderRequest:
+      title: CreateOrderRequest
+      required:
+      - tax
+      - shippingFee
+      - items
+      type: object
+      properties:
+        tax:
+          type: integer
+          format: int32
+        shippingFee:
+          type: integer
+          format: int32
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+          description: ''
+      example:
+        tax: 499
+        shippingFee: 799
+        items:
+        - amount: 3
+          product: 615c873ad584c748cc86e5bb
+        - amount: 2
+          product: 615e04a132ba7c9f0338f13e
+    Item:
+      title: Item
+      required:
+      - amount
+      - product
+      type: object
+      properties:
+        amount:
+          type: integer
+          format: int32
+        product:
+          type: string
+      example:
+        amount: 3
+        product: 615c873ad584c748cc86e5bb
+tags:
+- name: Auth
+- name: User
+- name: Products
+- name: Reviews
+- name: Orders
